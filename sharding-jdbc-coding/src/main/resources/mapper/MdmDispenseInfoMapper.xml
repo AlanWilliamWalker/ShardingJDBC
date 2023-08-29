@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.readwrite.mapper.MdmDispenseInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.readwrite.model.MdmDispenseInfoEntity">
+        <id column="id" property="id"/>
+        <result column="target_code" property="targetCode"/>
+        <result column="target_name" property="targetName"/>
+        <result column="company_code" property="companyCode"/>
+        <result column="company_name" property="companyName"/>
+        <result column="father_com_id" property="fatherComId"/>
+        <result column="md_type" property="mdType"/>
+        <result column="md_model" property="mdModel"/>
+        <result column="app_id" property="appId"/>
+        <result column="secret_key" property="secretKey"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+
+    <select id="findMdmDispenseInfoByTargetCodeAndMdModel" resultMap="BaseResultMap">
+        SELECT
+        t.`id`,t.`target_code`,t.`target_name`,t.`company_code`,t.`company_name`,t.`md_model`,t.`md_type`,t.`app_id`,t.`secret_key`,t.`status`,t.`create_time`
+        FROM mdm_dispense_info t WHERE 1=1
+        <if test="targetCode != null and targetCode != ''">
+            and t.target_code = #{targetCode}
+        </if>
+        <if test="mdModel != null and mdModel != ''">
+            and t.md_model = #{mdModel}
+        </if>
+    </select>
+</mapper>

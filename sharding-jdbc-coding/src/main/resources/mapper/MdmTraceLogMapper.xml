@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.readwrite.mapper.MdmTraceLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.readwrite.model.MdmTraceLogEntity">
+        <id column="id" property="id"/>
+        <id column="trace_id" property="traceId"/>
+        <result column="target_code" property="targetCode"/>
+        <result column="md_data_id" property="mdDataId"/>
+        <result column="md_data_code" property="mdDataCode"/>
+        <result column="md_model" property="mdModel"/>
+        <result column="param" property="param"/>
+        <result column="trace_status" property="traceStatus"/>
+        <result column="detail_json" property="detailJson"/>
+        <result column="trace_batch" property="traceBatch"/>
+        <result column="trace_time" property="traceTime"/>
+        <result column="dispense_type" property="dispenseType"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="queryMdmTraceLogList" resultType="java.lang.Long">
+        SELECT
+        a.id
+        from mdm_trace_log a
+        <where>
+            <if test="req.id != null ">
+                AND a.id like concat('%', #{req.id}, '%')
+            </if>
+            <if test="req.mdmDataId != null  and req.mdmDataId != ''">
+                AND a.md_data_id like concat('%', #{req.mdmDataId}, '%')
+            </if>
+            <if test="req.mdmModelList !=null and req.mdmModelList.size > 0">
+                and a.md_model in
+                <foreach collection="req.mdmModelList" separator="," open="(" close=")" item="mdmModel" index="index">
+                    #{mdmModel}
+                </foreach>
+            </if>
+            <if test="req.traceBatch != null">
+                AND a.trace_batch = #{req.traceBatch}
+            </if>
+            <if test="req.traceStatus != null">
+                AND a.trace_status = #{req.traceStatus}
+            </if>
+            <if test="req.traceTimeStart != null">
+                 AND a.trace_time  <![CDATA[ >= ]]> #{req.traceTimeStart}
+            </if>
+            <if test="req.traceTimeEnd != null">
+                 AND a.trace_time <![CDATA[ <= ]]> #{req.traceTimeEnd}
+            </if>
+        </where>
+        <if test="req.orderType == 'traceTime' and req.order == 0">order by a.id asc</if>
+        <if test="req.orderType == 'traceTime' and req.order == 1">order by a.id desc</if>
+    </select>
+
+    <select id="queryMdmTraceLogListWithDispense" resultType="java.lang.Long">
+        SELECT
+        a.id
+        from mdm_trace_log a left JOIN mdm_dispense_info b on a.target_code = b.target_code and a.md_model = b.md_model
+        <where>
+            <if test="req.id != null ">
+                AND a.id like concat('%', #{req.id}, '%')
+            </if>
+            <if test="req.mdmDataId != null  and req.mdmDataId != ''">
+                AND a.md_data_id like concat('%', #{req.mdmDataId}, '%')
+            </if>
+            <if test="req.mdmModelList !=null and req.mdmModelList.size > 0">
+                and a.md_model in
+                <foreach collection="req.mdmModelList" separator="," open="(" close=")" item="mdmModel" index="index">
+                    #{mdmModel}
+                </foreach>
+            </if>
+            <if test="req.targetCode != null  and req.targetCode != ''">
+                AND b.target_code = #{req.targetCode}
+            </if>
+            <if test="req.traceBatch != null">
+                AND a.trace_batch = #{req.traceBatch}
+            </if>
+            <if test="req.traceStatus != null">
+                AND a.trace_status = #{req.traceStatus}
+            </if>
+            <if test="req.companyName !=null and req.companyName.size > 0">
+                and b.company_name in
+                <foreach collection="req.companyName" separator="," open="(" close=")" item="company" index="index">
+                    #{company}
+                </foreach>
+            </if>
+            <if test="req.traceTimeStart != null">
+                <![CDATA[   AND a.trace_time >= #{req.traceTimeStart}   ]]>
+            </if>
+            <if test="req.traceTimeEnd != null">
+                <![CDATA[  AND a.trace_time <= #{req.traceTimeEnd}    ]]>
+            </if>
+        </where>
+        <if test="req.orderType == 'traceTime' and req.order == 0">order by a.id asc</if>
+        <if test="req.orderType == 'traceTime' and req.order == 1">order by a.id desc</if>
+        limit #{req.pageNum},#{req.pageSize}
+    </select>
+
+    <select id="queryMdmTraceLogListWithDispenseTotal" resultType="java.lang.Integer">
+        SELECT count(0)
+        from mdm_trace_log a left JOIN mdm_dispense_info b on a.target_code = b.target_code and a.md_model = b.md_model
+        <where>
+            <if test="req.id != null ">
+                AND a.id like concat('%', #{req.id}, '%')
+            </if>
+            <if test="req.mdmDataId != null  and req.mdmDataId != ''">
+                AND a.md_data_id like concat('%', #{req.mdmDataId}, '%')
+            </if>
+            <if test="req.mdmModelList !=null and req.mdmModelList.size > 0">
+                and a.md_model in
+                <foreach collection="req.mdmModelList" separator="," open="(" close=")" item="mdmModel" index="index">
+                    #{mdmModel}
+                </foreach>
+            </if>
+            <if test="req.targetCode != null  and req.targetCode != ''">
+                AND b.target_code = #{req.targetCode}
+            </if>
+            <if test="req.traceBatch != null">
+                AND a.trace_batch = #{req.traceBatch}
+            </if>
+            <if test="req.traceStatus != null">
+                AND a.trace_status = #{req.traceStatus}
+            </if>
+            <if test="req.companyName !=null and req.companyName.size > 0">
+                and b.company_name in
+                <foreach collection="req.companyName" separator="," open="(" close=")" item="company" index="index">
+                    #{company}
+                </foreach>
+            </if>
+            <if test="req.traceTimeStart != null">
+                <![CDATA[   AND a.trace_time >= #{req.traceTimeStart}   ]]>
+            </if>
+            <if test="req.traceTimeEnd != null">
+                <![CDATA[  AND a.trace_time <= #{req.traceTimeEnd}    ]]>
+            </if>
+        </where>
+    </select>
+
+    <select id="queryMdmTraceLogListByIds" resultType="com.example.readwrite.model.MdmTraceLogResponse">
+        select
+        id,
+        md_data_id as mdDataId,
+        md_model as mdModel,
+        target_code as targetCode,
+        detail_json as detailJson,
+        trace_status as traceStatus,
+        trace_batch as traceBatch,
+        md_data_code as mdDataCode,
+        param as param,
+        dispense_type as dispenseType,
+        trace_time as traceTime
+        from mdm_trace_log
+        <where>
+            <if test="idList !=null and idList.size > 0">
+                and id in
+                <foreach collection="idList" separator="," open="(" close=")" item="id" index="index">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+        <if test="orderType == 'traceTime' and order == 0">order by id asc</if>
+        <if test="orderType == 'traceTime' and order == 1">order by id desc</if>
+    </select>
+
+    <select id="queryOverViewMdmDataRateTrace" resultType="java.lang.String">
+        SELECT DISTINCT (target_code)
+        FROM `mdm_trace_log`
+        where md_model = #{mdmModelCode}
+          and trace_time <![CDATA[ >= ]]> #{startOfDay}
+          and trace_time <![CDATA[ <= ]]> #{endOfDay}
+          and trace_status = 1
+    </select>
+
+    <select id="queryOverViewMdmDataRateTraceTotal" resultType="java.lang.Integer">
+        SELECT count(DISTINCT (md_data_id)) traceTotal
+        FROM `mdm_trace_log`
+        where target_code = #{targetCode}
+          and md_model = #{mdmModelCode}
+          and trace_time <![CDATA[ >= ]]> #{startOfDay}
+          and trace_time <![CDATA[ <= ]]> #{endOfDay}
+          and trace_status = 1
+    </select>
+
+    <select id="queryDetailJsonByModelCode" resultType="java.lang.String">
+        SELECT detail_json
+        FROM `mdm_trace_log`
+        where md_model = #{mdmModelCode}
+          and trace_time <![CDATA[ >= ]]> #{startOfDay}
+          and trace_time <![CDATA[ <= ]]> #{endOfDay}
+          and trace_status = 1
+        GROUP BY target_code
+    </select>
+
+
+</mapper>

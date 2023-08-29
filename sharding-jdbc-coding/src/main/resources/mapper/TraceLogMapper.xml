@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.readwrite.mapper.TraceLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.readwrite.model.TraceLogEntity">
+        <id column="id" property="id"/>
+        <id column="trace_id" property="traceId"/>
+        <result column="target_code" property="targetCode"/>
+        <result column="md_data_id" property="mdDataId"/>
+        <result column="md_data_code" property="mdDataCode"/>
+        <result column="md_model" property="mdModel"/>
+        <result column="param" property="param"/>
+        <result column="trace_status" property="traceStatus"/>
+        <result column="detail_json" property="detailJson"/>
+        <result column="trace_batch" property="traceBatch"/>
+        <result column="trace_time" property="traceTime"/>
+        <result column="dispense_type" property="dispenseType"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+    <insert id="insertLog">
+
+        INSERT INTO mdm_trace_log ( target_code, md_data_id, md_data_code, md_model, param, trace_status,
+                                   detail_json, trace_batch, trace_time, dispense_type, create_by, create_time,
+                                   update_by, update_time)
+        VALUES (#{targetCode}, #{mdDataId}, #{mdDataCode}, #{mdModel}, #{param}, #{traceStatus}, #{detailJson},
+                #{traceBatch}, #{traceTime}, #{dispenseType}, #{createBy}, #{createTime}, #{updateBy}, #{updateTime})
+    </insert>
+
+</mapper>

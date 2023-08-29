@@ -1,0 +1,81 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    dynamic:
+      primary: master
+      strict: true
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/mdm_data?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+          username: root
+          password: root
+  redis:
+    sentinel:
+      master: mymaster
+      nodes: test-info-redis.ytx.com:26379,test-info-redis.ytx.com:26380,test-info-redis.ytx.com:26381
+    password: R9EAqzJIktF0J#NP.DT9J
+    timeout: 6000ms
+    database: 0
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    timezone: GMT+8
+  shardingsphere:
+    # 是否开启
+    datasource:
+      # 数据源（逻辑名字）
+      names: mdm_data
+      # 配置数据源
+      mdm_data:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/mdm_data?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+        username: root
+        password: root
+    # 分片的配置
+    rules:
+      sharding:
+        # 表的分片策略
+        tables:
+          # 逻辑表的名称
+          mdm_trace_log:
+            # 数据节点配置，采用Groovy表达式
+            actual-data-nodes:  mdm_data.mdm_trace_log,mdm_data.mdm_trace_log_202308,mdm_data.mdm_trace_log_202309,mdm_data.mdm_trace_log_202310,mdm_data.mdm_trace_log_202311,mdm_data.mdm_trace_log_202312,mdm_data.mdm_trace_log_202401,mdm_data.mdm_trace_log_202402,mdm_data.mdm_trace_log_202403,mdm_data.mdm_trace_log_202404,mdm_data.mdm_trace_log_202405,mdm_data.mdm_trace_log_202406,mdm_data.mdm_trace_log_202407,mdm_data.mdm_trace_log_202408
+            # 配置策略
+            table-strategy:
+              # 用于单分片键的标准分片场景
+              standard:
+                # 分片算法名字
+                sharding-algorithm-name: trace_log_algorithm
+                sharding-column: trace_time
+            key-generate-strategy: # 主键生成策略
+              column: id  # 主键列
+              key-generator-name: snowflake  # 策略算法名称(推荐使用雪花算法)
+        key-generators:
+          snowflake:
+            type: CUSTOM
+        sharding-algorithms:
+          trace_log_algorithm:
+            #type: MOD
+            type: INTERVAL
+            #type: inline
+            props:
+              # inline,MOD
+              #algorithm-expression: mdm_trace_log_$->{id % 2}
+              #sharding-count: 2
+              # INTERVAL
+              datetime-pattern: yyyy-MM-dd HH:mm:ss
+              sharding-suffix-pattern: yyyyMM
+              datetime-lower: 2023-01-01 00:00:00
+              datetime-interval-unit: MONTHS
+    props:
+      # 日志显示具体的SQL
+      sql-show: true
+
