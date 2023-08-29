@@ -4,7 +4,84 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f4aa6f9-59ae-449e-b67d-099f6e59ef3e" name="Changes" comment="sharding-jdbc" />
+    <list default="true" id="6f4aa6f9-59ae-449e-b67d-099f6e59ef3e" name="Changes" comment="sharding-jdbc">
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/mdm_trace_log.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/ReadwriteApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/alg/TraceLogByRedisKeyGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/controller/TraceLogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/mapper/MdmDispenseInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/mapper/MdmTraceLogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/mapper/TraceLogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/AesUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/BaseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/CooperationCategoryEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/IndustryEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/MagicConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/MaritalEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/MdmDispenseInfoEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/MdmEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/MdmTraceLogEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/MdmTraceLogListRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/MdmTraceLogResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/PageDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/PhonePrimaryEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/PrivacyDimmerUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/RedisKeySerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/RedisTemplateConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/RedisUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/ResultCodeConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/SexEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/SupplierBasicStatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/SupplierTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/TraceLogEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/TraceStatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/model/TraceTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/service/IMdmTraceLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/service/ITraceLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/service/impl/MdmTraceLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/service/impl/TraceLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/java/com/example/readwrite/sharding/DynamicDataSourceProviderConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/META-INF/services/org.apache.shardingsphere.sharding.spi.KeyGenerateAlgorithm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-垂直分库.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-垂直分表.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-多表关联.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-广播表.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-按id分表.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-按月分片-测试通过.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-按月分片.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-水平分表分库.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-终.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application-读写分离.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/mapper/MdmDispenseInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/mapper/MdmTraceLogMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-coding/src/main/resources/mapper/TraceLogMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/db/sharding.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/ShardingJdbcDemoApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/config/DataSourceConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/config/MyHintShardingAlgorithm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/config/MybatisPlusConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/entity/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/mapper/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/java/com/github/dudiao/sharding/utils/StopWatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/resources/application-hint.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/resources/application-sharding.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/test/java/com/github/dudiao/sharding/ShardingJdbcDemoApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharding-jdbc-demo/src/test/java/com/github/dudiao/sharding/ShardingJdbcHintDemoApplicationTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +138,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1693276927220</updated>
-      <workItem from="1693276929248" duration="837000" />
+      <workItem from="1693276929248" duration="1139000" />
     </task>
     <task id="LOCAL-00001" summary="sharding-jdbc">
       <created>1693277701391</created>
@@ -70,7 +147,28 @@
       <option name="project" value="LOCAL" />
       <updated>1693277701391</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sharding-jdbc">
+      <created>1693277924406</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693277924406</updated>
+    </task>
+    <task id="LOCAL-00003" summary="sharding-jdbc">
+      <created>1693277964507</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693277964507</updated>
+    </task>
+    <task id="LOCAL-00004" summary="sharding-jdbc">
+      <created>1693278079695</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693278079695</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
