@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ShardingJDBC.iml" filepath="$PROJECT_DIR$/.idea/ShardingJDBC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sharding-jdbc-coding/readwrite.iml" filepath="$PROJECT_DIR$/sharding-jdbc-coding/readwrite.iml" />
       <module fileurl="file://$PROJECT_DIR$/sharding-jdbc-demo/sharding-jdbc-demo.iml" filepath="$PROJECT_DIR$/sharding-jdbc-demo/sharding-jdbc-demo.iml" />
     </modules>
   </component>
